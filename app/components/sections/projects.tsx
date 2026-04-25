@@ -15,7 +15,7 @@ import {
     projectDetailPath,
 } from "@/app/utils/project-detail-navigation";
 import { logPrefersHardNavContext, logProjectsScroll } from "@/app/utils/projects-scroll-debug";
-import { useShootModeOn } from "@/app/utils/shoot-mode-store";
+
 
 if (typeof window !== "undefined") {
     gsap.registerPlugin(ScrollTrigger);
@@ -213,7 +213,7 @@ const ProjectsDesktopGallery = memo(function ProjectsDesktopGallery({
 });
 
 export default function Projects() {
-    const shootModeOn = useShootModeOn();
+
     const router = useRouter();
     const featured = useMemo(() => projects.slice(0, FEATURED_COUNT), []);
     const sectionRef = useRef<HTMLElement>(null);
@@ -235,7 +235,6 @@ export default function Projects() {
 
     const scrollToProject = useCallback(
         (index: number) => {
-            if (shootModeOn) return;
             if (typeof window === "undefined") return;
             if (!window.matchMedia(DESKTOP_MQ).matches) return;
 
@@ -249,12 +248,11 @@ export default function Projects() {
             lastScrubIndexRef.current = index;
             setActiveIndex(index);
         },
-        [shootModeOn],
+        [],
     );
 
     const goToProject = useCallback(
         (slug: string) => {
-            if (shootModeOn) return;
             if (isNavigating) return;
 
             const hard = prefersHardNavigationToProjectDetail();
@@ -288,7 +286,7 @@ export default function Projects() {
                 router.push(projectDetailPath(slug));
             }, 620);
         },
-        [isNavigating, router, shootModeOn],
+        [isNavigating, router],
     );
 
     useEffect(() => {
@@ -475,12 +473,7 @@ export default function Projects() {
                     <div className="mt-12 border-t border-border pt-10 sm:mt-14">
                         <Link
                             href="/projects"
-                            onClick={(e) => {
-                                if (shootModeOn) e.preventDefault();
-                            }}
-                            aria-disabled={shootModeOn}
-                            tabIndex={shootModeOn ? -1 : undefined}
-                            className={`inline-flex items-center gap-3 bg-foreground px-5 py-3 font-mono text-[11px] font-semibold uppercase tracking-[0.2em] text-background transition-colors hover:bg-foreground/85${shootModeOn ? " pointer-events-none opacity-50" : ""}`}
+                            className="inline-flex items-center gap-3 bg-foreground px-5 py-3 font-mono text-[11px] font-semibold uppercase tracking-[0.2em] text-background transition-colors hover:bg-foreground/85"
                         >
                             View all
                         </Link>
@@ -510,9 +503,8 @@ export default function Projects() {
                                     <button
                                         key={project.slug}
                                         type="button"
-                                        disabled={shootModeOn}
                                         onClick={() => scrollToProject(index)}
-                                        className="group flex items-center gap-3 rounded-sm text-left outline-none ring-foreground/30 focus-visible:ring-2 disabled:cursor-not-allowed disabled:opacity-60"
+                                        className="group flex items-center gap-3 rounded-sm text-left outline-none ring-foreground/30 focus-visible:ring-2"
                                     >
                                         <motion.div
                                             animate={{ scale: isActive ? 1 : 0.78 }}
@@ -584,12 +576,7 @@ export default function Projects() {
                         <div className="mt-10 sm:mt-12">
                             <Link
                                 href="/projects"
-                                onClick={(e) => {
-                                    if (shootModeOn) e.preventDefault();
-                                }}
-                                aria-disabled={shootModeOn}
-                                tabIndex={shootModeOn ? -1 : undefined}
-                                className={`inline-flex items-center gap-3 bg-foreground px-5 py-3 font-mono text-[11px] font-semibold uppercase tracking-[0.2em] text-background transition-colors hover:bg-foreground/85${shootModeOn ? " pointer-events-none opacity-50" : ""}`}
+                                className="inline-flex items-center gap-3 bg-foreground px-5 py-3 font-mono text-[11px] font-semibold uppercase tracking-[0.2em] text-background transition-colors hover:bg-foreground/85"
                             >
                                 View all
                             </Link>
@@ -604,7 +591,7 @@ export default function Projects() {
                             activeIndex={activeIndex}
                             viewportShell={viewportShell}
                             goToProject={goToProject}
-                            interactionsDisabled={shootModeOn}
+                            interactionsDisabled={false}
                         />
                     </div>
                 </div>
