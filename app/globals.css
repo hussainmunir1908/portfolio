@@ -261,34 +261,6 @@ body.route-transition-lock *::-webkit-scrollbar {
 }
 
 
-
-
-
-
-  pointer-events: auto !important;
-}
-
-/* Pinned / scroll-scrub regions (e.g. projects gallery): real clicks + wheel/touch scroll. */
-  pointer-events: auto !important;
-}
-
-/*
- * media queries alone miss many tablets that report fine pointer + hover).
- */
-  touch-action: manipulation !important;
-}
-
-  cursor: none !important;
-}
-
-/* Shoot toggle: show normal pointer so users can see they can turn mode off. */
-  cursor: pointer !important;
-}
-
-  background: transparent !important;
-  color: inherit !important;
-}
-
 /*
  * Hero backdrop: compositor-only motion for orbs (large blur + Framer every frame was heavy).
  */
