@@ -10,7 +10,7 @@ const hobbiesData = [
   {
     id: "piano",
     title: "Piano",
-    description: "I have been playing the piano for 5 years now. I'm completely self-taught, exploring melodies and expressing creativity through music. Check out my Instagram handle @broccoli.wav for some of my stuff.",
+    description: "I have been playing the piano for 5 years now. I'm completely self-taught, exploring melodies and expressing creativity through music. Check out my Instagram handle @broccoli.wav for some of my stuff. For spotify, search up \"Hussain Munir\" :)",
     image: "/images/hobbies/PianoImage.PNG",
   },
   {
@@ -65,11 +65,11 @@ export default function Hobbies() {
                     </h2>
                 </div>
 
-                <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8">
+                <div className="grid grid-cols-1 gap-6 lg:gap-10">
                     {hobbiesData.map((hobby) => (
                         <div 
                             key={hobby.id} 
-                            className="hobby-card group relative aspect-square lg:aspect-[3/4] overflow-hidden rounded-sm border border-border bg-muted"
+                            className="hobby-card group relative aspect-[4/3] md:aspect-video lg:aspect-[21/9] overflow-hidden rounded-sm border border-border bg-muted"
                         >
                             {/* Background Image */}
                             <Image
@@ -85,11 +85,11 @@ export default function Hobbies() {
 
                             {/* Centered Text Overlay */}
                             <div className="absolute inset-0 flex items-center justify-center p-6">
-                                <div className="bg-background/80 backdrop-blur-md border border-border/50 rounded-sm p-6 sm:p-8 text-center shadow-xl transition-transform duration-500 ease-out group-hover:scale-105">
-                                    <h3 className="text-2xl font-black uppercase tracking-tight text-foreground sm:text-3xl mb-4">
+                                <div className="bg-background/40 backdrop-blur-md border border-border/30 rounded-sm p-6 sm:p-8 md:p-10 text-center shadow-xl transition-transform duration-500 ease-out group-hover:scale-105">
+                                    <h3 className="text-2xl font-black uppercase tracking-tight text-foreground sm:text-3xl md:text-4xl mb-4">
                                         {hobby.title}
                                     </h3>
-                                    <p className="text-sm leading-relaxed text-foreground/80 sm:text-base italic max-w-xs mx-auto">
+                                    <p className="text-sm leading-relaxed text-foreground/90 sm:text-base md:text-lg italic max-w-2xl mx-auto">
                                         {hobby.description}
                                     </p>
                                 </div>
