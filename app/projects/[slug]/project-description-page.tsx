@@ -84,7 +84,7 @@ export default function ProjectDescriptionPage({
                                 </Link>
                             </div>
                             <a
-                                href={project.image}
+                                href={typeof project.image === "string" ? project.image : project.image.src}
                                 target="_blank"
                                 rel="noopener noreferrer"
                                 className="rounded-full border border-white/35 bg-black/20 px-3 py-1.5 font-mono text-[9px] uppercase tracking-[0.2em] text-white/90 backdrop-blur-sm transition-colors hover:border-white/55 hover:bg-black/35 sm:text-[10px]"
