@@ -54,6 +54,24 @@ const projectCoreList: readonly ProjectCore[] = [
         image: "/images/portfolio/ResQHubShowcase.png",
         initialImage: "/images/portfolio/ResQHubInitial.png",
     },
+    {
+        slug: "virtualgpu",
+        title: "VirtualGPU Simulator",
+        role: "Developer",
+        highlights: [
+            "Developed an interactive web-based simulator visualizing GPU architecture and parallel processing.",
+            "Built dynamic visualizations for thread execution, scheduling, and memory hierarchies.",
+            "Engineered a performant state-management system to handle real-time simulation updates.",
+            "Designed an intuitive, responsive interface making complex hardware concepts accessible."
+        ],
+        tech: ["React", "TypeScript", "Tailwind CSS", "Vercel"],
+        github: "https://github.com/hussainmunir1908/VirtualGPU",
+        live: "https://virtual-gpu.vercel.app",
+        featured: true,
+        year: "2026",
+        image: "/images/portfolio/GPUShowcase.png",
+        initialImage: "/images/portfolio/GPUInitial.png",
+    },
 ];
 
 function attachDescription(core: ProjectCore): Project {

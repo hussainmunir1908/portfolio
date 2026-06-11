@@ -21,7 +21,7 @@ if (typeof window !== "undefined") {
     gsap.registerPlugin(ScrollTrigger);
 }
 
-const FEATURED_COUNT = 2;
+const FEATURED_COUNT = 3;
 const DESKTOP_MQ = "(min-width: 1024px)";
 
 function categoryLabel(project: Project): string {
@@ -332,8 +332,10 @@ export default function Projects() {
                     track,
                     { y: 0 },
                     {
-                        y: () =>
-                            -Math.max(0, track.scrollHeight - viewport.clientHeight),
+                        y: () => {
+                            const lastChild = track.lastElementChild as HTMLElement;
+                            return lastChild ? -lastChild.offsetTop : 0;
+                        },
                         ease: "none",
                         scrollTrigger: {
                             trigger: section,
