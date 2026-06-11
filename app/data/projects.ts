@@ -1,4 +1,12 @@
+import { StaticImageData } from "next/image";
 import { PROJECT_DESCRIPTIONS } from "./project-descriptions";
+
+import khataShowcase from "@/public/images/portfolio/KhataShowcase.png";
+import khataInitial from "@/public/images/portfolio/KhataInitial.png";
+import resqhubShowcase from "@/public/images/portfolio/ResQHubShowcase.png";
+import resqhubInitial from "@/public/images/portfolio/ResQHubInitial.png";
+import gpuShowcase from "@/public/images/portfolio/GPUShowcase.png";
+import gpuInitial from "@/public/images/portfolio/GPUInitial.png";
 
 export type Project = {
     slug: string;
@@ -11,8 +19,8 @@ export type Project = {
     live: string;
     featured: boolean;
     year: string;
-    image: string;
-    initialImage: string;
+    image: StaticImageData | string;
+    initialImage: StaticImageData | string;
 };
 
 type ProjectCore = Omit<Project, "description">;
@@ -33,8 +41,8 @@ const projectCoreList: readonly ProjectCore[] = [
         live: "https://khata-ai-pk.vercel.app/",
         featured: true,
         year: "2026",
-        image: "/images/portfolio/KhataShowcase.png",
-        initialImage: "/images/portfolio/KhataInitial.png",
+        image: khataShowcase,
+        initialImage: khataInitial,
     },
     {
         slug: "resqhub",
@@ -51,8 +59,8 @@ const projectCoreList: readonly ProjectCore[] = [
         live: "https://resqhub-three.vercel.app/",
         featured: true,
         year: "2025",
-        image: "/images/portfolio/ResQHubShowcase.png",
-        initialImage: "/images/portfolio/ResQHubInitial.png",
+        image: resqhubShowcase,
+        initialImage: resqhubInitial,
     },
     {
         slug: "virtualgpu",
@@ -69,8 +77,8 @@ const projectCoreList: readonly ProjectCore[] = [
         live: "https://virtual-gpu.vercel.app",
         featured: true,
         year: "2026",
-        image: "/images/portfolio/GPUShowcase.png",
-        initialImage: "/images/portfolio/GPUInitial.png",
+        image: gpuShowcase,
+        initialImage: gpuInitial,
     },
 ];
 

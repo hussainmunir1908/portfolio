@@ -135,6 +135,7 @@ const ProjectsDesktopGallery = memo(function ProjectsDesktopGallery({
                                             src={p.initialImage}
                                             alt={p.title}
                                             fill
+                                            placeholder="blur"
                                             sizes="(max-width: 1024px) 100vw, 65vw"
                                             className="object-cover object-center"
                                             priority={index === 0}
@@ -455,6 +456,7 @@ export default function Projects() {
                                             src={project.initialImage}
                                             alt={project.title}
                                             fill
+                                            placeholder="blur"
                                             sizes="100vw"
                                             className="object-cover object-center transition-transform duration-500 group-hover:scale-[1.02]"
                                             priority={index === 0}
@@ -520,7 +522,7 @@ export default function Projects() {
                                             aria-hidden
                                         >
                                             <img
-                                                src={project.initialImage}
+                                                src={typeof project.initialImage === "string" ? project.initialImage : project.initialImage.src}
                                                 alt=""
                                                 width={160}
                                                 height={90}

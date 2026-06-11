@@ -6,24 +6,28 @@ import { useGSAP } from "@/app/hooks/useGSAP";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
+import pianoImage from "@/public/images/hobbies/PianoImage.png";
+import gamingImage from "@/public/images/hobbies/GamingAndVideoEditing.png";
+import toysImage from "@/public/images/hobbies/Toys.png";
+
 const hobbiesData = [
   {
     id: "piano",
     title: "Piano",
     description: "I have been playing the piano for 5 years now. I'm completely self-taught, exploring melodies and expressing creativity through music. Check out my Instagram handle @broccoli.wav for some of my stuff. For spotify, search up \"Hussain Munir\" :)",
-    image: "/images/hobbies/PianoImage.PNG",
+    image: pianoImage,
   },
   {
     id: "gaming",
     title: "Gaming & Video Editing",
     description: "I've been gaming since childhood. Recently, I blended my love for gaming and video editing skills to create aesthetic videogame edits of cars and immersive gaming moments.",
-    image: "/images/hobbies/GamingAndVideoEditing.png",
+    image: gamingImage,
   },
   {
     id: "toys",
     title: "Collecting Toys",
     description: "I find these miniature figures and collectibles incredibly adorable. I love discovering unique pieces and carefully curating my collection.",
-    image: "/images/hobbies/Toys.png",
+    image: toysImage,
   }
 ];
 
@@ -69,13 +73,14 @@ export default function Hobbies() {
                     {hobbiesData.map((hobby) => (
                         <div 
                             key={hobby.id} 
-                            className="hobby-card group relative aspect-[4/3] md:aspect-video lg:aspect-[21/9] overflow-hidden rounded-sm border border-border bg-muted"
+                            className="hobby-card group relative aspect-[4/3] md:aspect-video lg:aspect-[21/9] overflow-hidden rounded-sm bg-muted"
                         >
                             {/* Background Image */}
                             <Image
                                 src={hobby.image}
                                 alt={hobby.title}
                                 fill
+                                placeholder="blur"
                                 className="object-cover object-center transition-transform duration-700 ease-out group-hover:scale-110"
                                 sizes="(max-width: 1024px) 100vw, 33vw"
                             />
